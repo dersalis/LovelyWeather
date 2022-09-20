@@ -44,6 +44,7 @@
 		DA2F9A4B28DA4556003BD590 /* LovelyWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LovelyWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2F9A4F28DA4556003BD590 /* LovelyWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovelyWeatherUITests.swift; sourceTree = "<group>"; };
 		DA2F9A5128DA4556003BD590 /* LovelyWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovelyWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DA900FFD28DA5978003160BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 		DA2F9A3328DA4554003BD590 /* LovelyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				DA900FFD28DA5978003160BF /* Info.plist */,
 				DA2F9A3428DA4554003BD590 /* LovelyWeatherApp.swift */,
 				DA2F9A3628DA4554003BD590 /* ContentView.swift */,
 				DA2F9A3828DA4556003BD590 /* Assets.xcassets */,
@@ -419,6 +421,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LovelyWeather/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LovelyWeather/Info.plist;
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,6 +451,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LovelyWeather/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LovelyWeather/Info.plist;
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
