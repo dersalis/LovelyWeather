@@ -12,14 +12,36 @@ struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
     
     
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 52.90360611831819, longitude: 16.566844805651744), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-    
         var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true)
-                .ignoresSafeArea()
-                .onAppear{
-                    viewModel.checkIfLocationServicesIsEnabled()
-                }
+            ZStack {
+                Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
+                    //.ignoresSafeArea()
+                    .accentColor(Color(.systemPink))
+                    .onAppear{
+                        viewModel.checkIfLocationServicesIsEnabled()
+                    }
+                VStack {
+                    HStack{
+                        Spacer()
+                        Text("26°C")
+                            .font(.system(size: 100))
+                            .fontWeight(.thin)
+                            .foregroundColor(Color.white)
+                        Spacer()
+                    }.padding(.top, 150)
+                    HStack{
+                        Spacer()
+                        Text("Czarnków, PL")
+                            .font(.system(size: 30))
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.white)
+                        Spacer()
+                    }
+                    Spacer()
+                    
+                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).background(LinearGradient(colors: [.blue.opacity(0.3), .blue.opacity(0.9), .blue], startPoint: .top, endPoint: .bottomTrailing))
+            }.ignoresSafeArea()
+            
     }
 }
 
@@ -30,41 +52,4 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-    
-    var locationManager: CLLocationManager?
-    
-    func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager!.delegate = self
-            //checkLocationAuthorization()
-        } else {
-            print("Turn on location!")
-        }
-    }
-    
-    private func checkLocationAuthorization() {
-        guard let locationManager = locationManager else {
-            return
-        }
-        
-        switch locationManager.authorizationStatus {
-            
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            print("Your location is restricted likely due to parental controls.")
-        case .denied:
-            print("You have danied this app location permmission. Go into settings to change it")
-        case .authorizedAlways, .authorizedWhenInUse:
-            break
-        @unknown default:
-            break
-        }
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
-    }
-}
+
